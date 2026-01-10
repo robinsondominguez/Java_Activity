@@ -23,10 +23,6 @@ public class ActividadProgramacion {
         return opc;
     }
 
-    static void mostrar_paciente(Persona p) {
-
-    }
-
     public static void main(String[] args) {
 
         Persona p1 = null;
@@ -49,7 +45,7 @@ public class ActividadProgramacion {
                 System.out.println("ingrese el nombre del paciente");
                 String nombre = new Scanner(System.in).nextLine();
                 System.out.println("ingrese el numero de documento");
-                double numero_documento = new Scanner(System.in).nextDouble();
+                String numero_documento = new Scanner(System.in).nextLine();
                 System.out.println("ingrese la edad del paciente");
                 int edad = new Scanner(System.in).nextInt();
                 System.out.println("ingrese el motivo");
@@ -66,9 +62,98 @@ public class ActividadProgramacion {
                     p3 = new Persona(nombre, numero_documento, edad, motivo, telefono, estado);
                 } else if (p4 == null) {
                     p4 = new Persona(nombre, numero_documento, edad, motivo, telefono, estado);
+                } else{
+                    System.out.println("**************************");
+                    System.out.println("Los cupos estan llenos.");
+                    System.out.println("**************************");
                 }
             } else if (opc == 2) {
-                System.out.println("""
+                if (p1 == null && p2 == null && p3 == null && p4 == null) {
+                    System.out.println("No hay resgistros de personas.");
+                } else if (p2 == null && p3 == null && p4 == null) {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s 
+                               """.formatted(p1.getNombre()));
+                    int opc2 = validacion(1, 1, "¿quien desea ver?");
+                    if (opc2 == 1) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p1.getNombre());
+                        System.out.println("ND: " + p1.getNumero_document());
+                        System.out.println("edad: " + p1.getEdad());
+                        System.out.println("Motivo: " + p1.getMotivo());
+                        System.out.println("Telefono: " + p1.getTelefono());
+                        System.out.println("Estado: " + p1.getEstado());
+                    }
+
+                } else if (p3 == null && p4 == null) {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s
+                               2. %s 
+                               """.formatted(p1.getNombre(), p2.getNombre()));
+                    int opc2 = validacion(1, 2, "¿quien desea ver?");
+                    if (opc2 == 1) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p1.getNombre());
+                        System.out.println("ND: " + p1.getNumero_document());
+                        System.out.println("edad: " + p1.getEdad());
+                        System.out.println("Motivo: " + p1.getMotivo());
+                        System.out.println("Telefono: " + p1.getTelefono());
+                        System.out.println("Estado: " + p1.getEstado());
+                    } else if (opc2 == 2) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p2.getNombre());
+                        System.out.println("ND: " + p2.getNumero_document());
+                        System.out.println("edad: " + p2.getEdad());
+                        System.out.println("Motivo: " + p2.getMotivo());
+                        System.out.println("Telefono: " + p2.getTelefono());
+                        System.out.println("Estado: " + p2.getEstado());
+                    }
+                } else if (p4 == null) {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s
+                               2. %s
+                               3. %s
+                               """.formatted(p1.getNombre(), p2.getNombre(), p3.getNombre()));
+                    int opc2 = validacion(1, 3, "¿quien desea ver?");
+                    if (opc2 == 1) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p1.getNombre());
+                        System.out.println("ND: " + p1.getNumero_document());
+                        System.out.println("edad: " + p1.getEdad());
+                        System.out.println("Motivo: " + p1.getMotivo());
+                        System.out.println("Telefono: " + p1.getTelefono());
+                        System.out.println("Estado: " + p1.getEstado());
+                    } else if (opc2 == 2) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p2.getNombre());
+                        System.out.println("ND: " + p2.getNumero_document());
+                        System.out.println("edad: " + p2.getEdad());
+                        System.out.println("Motivo: " + p2.getMotivo());
+                        System.out.println("Telefono: " + p2.getTelefono());
+                        System.out.println("Estado: " + p2.getEstado());
+                    } else if (opc2 == 3) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p3.getNombre());
+                        System.out.println("ND: " + p3.getNumero_document());
+                        System.out.println("edad: " + p3.getEdad());
+                        System.out.println("Motivo: " + p3.getMotivo());
+                        System.out.println("Telefono: " + p3.getTelefono());
+                        System.out.println("Estado: " + p3.getEstado());
+                    }
+                } else {
+                    System.out.println("""
                                ********************************
                                PACIENTES
                                1. %s
@@ -76,53 +161,121 @@ public class ActividadProgramacion {
                                3. %s
                                4. %s
                                """.formatted(p1.getNombre(), p2.getNombre(), p3.getNombre(), p4.getNombre()));
-                int opc2 = validacion(1, 4, "¿que desea hacer?");
-                if (opc2 == 1) {
-                    System.out.println("*******************************");
-                    System.out.println("DETALLES PACIENTE");
-                    System.out.println("Nombre: " + p1.getNombre());
-                    System.out.println("ND: " + p1.getNumero_document());
-                    System.out.println("edad: " + p1.getEdad());
-                    System.out.println("Motivo: " + p1.getMotivo());
-                    System.out.println("Telefono: " + p1.getTelefono());
-                    System.out.println("Estado: " + p1.getEstado());
-                } else if (opc2 == 2) {
-                    System.out.println("*******************************");
-                    System.out.println("DETALLES PACIENTE");
-                    System.out.println("Nombre: " + p2.getNombre());
-                    System.out.println("ND: " + p2.getNumero_document());
-                    System.out.println("edad: " + p2.getEdad());
-                    System.out.println("Motivo: " + p2.getMotivo());
-                    System.out.println("Telefono: " + p2.getTelefono());
-                    System.out.println("Estado: " + p2.getEstado());
-                } else if (opc2 == 3) {
-                    System.out.println("*******************************");
-                    System.out.println("DETALLES PACIENTE");
-                    System.out.println("Nombre: " + p3.getNombre());
-                    System.out.println("ND: " + p3.getNumero_document());
-                    System.out.println("edad: " + p3.getEdad());
-                    System.out.println("Motivo: " + p3.getMotivo());
-                    System.out.println("Telefono: " + p3.getTelefono());
-                    System.out.println("Estado: " + p3.getEstado());
-                } else if (opc2 == 4) {
-                    System.out.println("*******************************");
-                    System.out.println("DETALLES PACIENTE");
-                    System.out.println("Nombre: " + p4.getNombre());
-                    System.out.println("ND: " + p4.getNumero_document());
-                    System.out.println("edad: " + p4.getEdad());
-                    System.out.println("Motivo: " + p4.getMotivo());
-                    System.out.println("Telefono: " + p4.getTelefono());
-                    System.out.println("Estado: " + p4.getEstado());
+                    int opc2 = validacion(1, 4, "¿quien desea ver?");
+                    if (opc2 == 1) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p1.getNombre());
+                        System.out.println("ND: " + p1.getNumero_document());
+                        System.out.println("edad: " + p1.getEdad());
+                        System.out.println("Motivo: " + p1.getMotivo());
+                        System.out.println("Telefono: " + p1.getTelefono());
+                        System.out.println("Estado: " + p1.getEstado());
+                    } else if (opc2 == 2) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p2.getNombre());
+                        System.out.println("ND: " + p2.getNumero_document());
+                        System.out.println("edad: " + p2.getEdad());
+                        System.out.println("Motivo: " + p2.getMotivo());
+                        System.out.println("Telefono: " + p2.getTelefono());
+                        System.out.println("Estado: " + p2.getEstado());
+                    } else if (opc2 == 3) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p3.getNombre());
+                        System.out.println("ND: " + p3.getNumero_document());
+                        System.out.println("edad: " + p3.getEdad());
+                        System.out.println("Motivo: " + p3.getMotivo());
+                        System.out.println("Telefono: " + p3.getTelefono());
+                        System.out.println("Estado: " + p3.getEstado());
+                    } else if (opc2 == 4) {
+                        System.out.println("*******************************");
+                        System.out.println("DETALLES PACIENTE");
+                        System.out.println("Nombre: " + p4.getNombre());
+                        System.out.println("ND: " + p4.getNumero_document());
+                        System.out.println("edad: " + p4.getEdad());
+                        System.out.println("Motivo: " + p4.getMotivo());
+                        System.out.println("Telefono: " + p4.getTelefono());
+                        System.out.println("Estado: " + p4.getEstado());
+                    }
                 }
             } else if (opc == 3) {
+                if (p1 == null && p2 == null && p3 == null && p4 == null) {
+                    System.out.println("No hay resgistros de personas.");
+                } else if (p2 == null && p3 == null && p4 == null) {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s 
+                               """.formatted(p1.getNombre()));
+                    int opc2 = validacion(1, 1, "¿que paciente desea marcar como atendido?");
+                    if (opc2 == 1) {
+                        p1 = null;
+                    }
 
+                } else if (p3 == null && p4 == null) {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s
+                               2. %s 
+                               """.formatted(p1.getNombre(), p2.getNombre()));
+                    int opc2 = validacion(1, 2, "¿que paciente desea marcar como atendido?");
+                    if (opc2 == 1) {
+                        p1 = p2;
+                        p2 = null;
+                    } else if (opc2 == 2) {
+                        p2 = null;
+                    }
+                } else if (p4 == null) {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s
+                               2. %s
+                               3. %s
+                               """.formatted(p1.getNombre(), p2.getNombre(), p3.getNombre()));
+                    int opc2 = validacion(1, 3, "¿que paciente desea marcar como atendido?");
+                    if (opc2 == 1) {
+                        p1 = p2;
+                        p2 = p3;
+                        p3 = null;
+                    } else if (opc2 == 2) {
+                        p2 = p3;
+                        p3 = null;
+                    } else if (opc2 == 3) {
+                        p3 = null;
+                    }
+                } else {
+                    System.out.println("""
+                               ********************************
+                               PACIENTES
+                               1. %s
+                               2. %s
+                               3. %s
+                               4. %s
+                               """.formatted(p1.getNombre(), p2.getNombre(), p3.getNombre(), p4.getNombre()));
+                    int opc2 = validacion(1, 4, "¿que paciente desea marcar como atendido?");
+                    if (opc2 == 1) {
+                        p1 = p2;
+                        p2 = p3;
+                        p3 = p4;
+                        p4 = null;
+                    } else if (opc2 == 2) {
+                        p2 = p3;
+                        p3 = p4;
+                        p4 = null;
+                    } else if (opc2 == 3) {
+                        p3 = p4;
+                        p4 = null;
+                    } else if (opc2 == 4) {
+                        p4 = null;
+                    }
+                }
             } else if (opc == 4) {
-
-            }
-            {
-
+                boleanito = false;
             }
         }
     }
-
 }
