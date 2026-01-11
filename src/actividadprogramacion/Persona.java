@@ -17,13 +17,12 @@ public class Persona {
         this.motivo = motivo;
         this.telefono = telefono;
         this.estado = estado;
-   
-    }
+    }   
 
     public String getNombre() {
         return nombre;
     }
-
+    
     public String getNumero_document() {
         return numero_documento;
     }
@@ -43,7 +42,4 @@ public class Persona {
     public String getEstado() {
         return estado;
     }
-
-
-    
 }
