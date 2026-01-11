@@ -25,14 +25,14 @@ public class ActividadProgramacion {
         } while (validar == false);
         return opc;
     }
-
-    static int calcularEdad(int edad) {
-        if (edad < 0) {
+    
+    static int calcularEdad(int edad){
+        if (edad < 0){
             System.out.println("Error, no se permite numeros negativos");
-        } else {
-            if (edad < 18) {
+        }else {
+            if(edad < 18){
                 System.out.println("Menor de edad");
-            } else {
+            }else{
                 System.out.println("Mayor de edad");
             }
         }
@@ -52,7 +52,7 @@ public class ActividadProgramacion {
         System.out.println("Motivo: " + p.getMotivo());
         System.out.println("Telefono: " + p.getTelefono());
         System.out.println("Estado: " + p.getEstado());
-        System.out.println("Edad: " + calcularEdad(p.getEdad()));
+        System.out.println("Tipo Edad: " + calcularEdad(p.getEdad()));
     }
 
     public static void main(String[] args) {
@@ -88,6 +88,8 @@ public class ActividadProgramacion {
                     String motivo = new Scanner(System.in).nextLine();
                     System.out.println("Porfavor Ingresa el telefono del paciente");
                     String telefono = new Scanner(System.in).nextLine();
+                    System.out.println("Porfavor Ingresa el estado del paciente");
+                    String estado = new Scanner(System.in).nextLine();
 
                     System.out.println("""
                                        Seguro que quieres registrar este paciente?
@@ -100,16 +102,16 @@ public class ActividadProgramacion {
                     if (Opc_registrar == 1) {
 
                         if (p1 == null) {
-                            p1 = new Persona(nombre, numero_documento, edad, motivo, telefono);
+                            p1 = new Persona(nombre, numero_documento, edad, motivo, telefono, estado);
                             System.out.println("Registro realizado con extido!!");
                         } else if (p2 == null) {
-                            p2 = new Persona(nombre, numero_documento, edad, motivo, telefono);
+                            p2 = new Persona(nombre, numero_documento, edad, motivo, telefono, estado);
                             System.out.println("Registro realizado con extido!!");
                         } else if (p3 == null) {
-                            p3 = new Persona(nombre, numero_documento, edad, motivo, telefono);
+                            p3 = new Persona(nombre, numero_documento, edad, motivo, telefono, estado);
                             System.out.println("Registro realizado con extido!!");
                         } else if (p4 == null) {
-                            p4 = new Persona(nombre, numero_documento, edad, motivo, telefono);
+                            p4 = new Persona(nombre, numero_documento, edad, motivo, telefono, estado);
                             System.out.println("Registro realizado con extido!!");
                         } else {
                             System.out.println("Los cupos estan llenos.");
@@ -151,15 +153,7 @@ public class ActividadProgramacion {
 
                     switch (Opcion_atender) {
                         case 1:
-                            if (p1 == null) {
-                                System.out.println("Persona no existente");
-                            } else {
-                                System.out.println("Deseas registrar el paciente? \n 1. Si \n 2. No");
-                                int Registrar_paciente = new Scanner(System.in).nextInt();
-                                if (Registrar_paciente == 1) {
-                                    p1.setEstado("Registrado");
-                                }
-                            }
+                            p1 = null;
                             System.out.println("La persona ya fue atendida!!");
                         case 2:
                             p2 = null;
