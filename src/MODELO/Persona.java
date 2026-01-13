@@ -1,5 +1,4 @@
-package actividadprogramacion;
-
+package MODELO;
 
 public class Persona {
     
@@ -42,4 +41,4 @@ public class Persona {
     public String getEstado() {
         return estado;
     }
-}
+} 
